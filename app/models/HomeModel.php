@@ -5,8 +5,4 @@ class HomeModel extends database{
         $sql = "SELECT * FROM tinhthanh";
         return mysqli_query($this->conn, $sql);
     }
-
-
 }
-
-?>

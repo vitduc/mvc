@@ -9,8 +9,5 @@ class Home extends Controller{
             "page"=>"sp",
             "tinh"=>$data->GetData()
         ]);
-    }
-
-    
+    } 
 }
-?>
