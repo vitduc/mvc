@@ -2,7 +2,7 @@
 
 <?php
 
-while ($row = mysqli_fetch_array($data['tinh'])){
+while ($row = $data['tinh']->fetch()){
     echo $row['tentinh'].'<br>';
 }
 

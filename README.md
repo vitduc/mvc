@@ -1,1 +1,3 @@
 # mvc
+
+<!-- ./vendor/bin/phpunit -->

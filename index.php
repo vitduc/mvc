@@ -1,4 +1,4 @@
 <?php
 session_start();
-require_once "./app/views/Bridge.php";
+require_once "./Views/Bridge.php";
 $myApp = new Application();
