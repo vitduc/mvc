@@ -1,0 +1,9 @@
+{
+    "name": "duc/mvc",
+    "autoload": {
+        "psr-4": {
+            "Duc\\Mvc\\": "src/"
+        }
+    },
+    "require": {}
+}
