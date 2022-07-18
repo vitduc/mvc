@@ -1,8 +1,5 @@
 <?php
-
-
-
-class Db
+class Database
 {
 
     private $host_name = 'localhost';
