@@ -1,8 +1,8 @@
 <?php
 
-class HomeModel extends database{
+class HomeModel extends Db{
     public function GetData(){
-        $sql = "SELECT * FROM tinhthanh";
-        return mysqli_query($this->conn, $sql);
+        $sql = "SELECT * FROM tinhthanh ";
+        return $this->connect()->query($sql);
     }
 }
