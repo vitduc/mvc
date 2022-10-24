@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_ImportExport:etc/export.xsd">
+    <entity name="part_numbers_interchange" label="Part Numbers Interchange"
+            model="Nsk\PartNumbersInterchange\Model\Export\PartNumbersInterchange"
+            entityAttributeFilterType="part_numbers_interchange"/>
+</config>

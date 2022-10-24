@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="PartNumberCollection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">nsk_part_numbers_interchange</argument>
+            <argument name="nsk_partnumbers_listing_data_source" xsi:type="string">
+                Nsk\PartNumbersInterchange\Model\ResourceModel\PartNumber\Grid\Collection
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="nsk_partnumbers_listing_data_source" xsi:type="string">
+                    Nsk\PartNumbersInterchange\Model\ResourceModel\PartNumber\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--  export data  -->
+    <preference for="Nsk\PartNumbersInterchange\Model\Export\PartNumbersCollectionFactoryInterface"
+                type="Nsk\PartNumbersInterchange\Model\Export\PartNumbersCollectionFactory"/>
+    <preference for="Nsk\PartNumbersInterchange\Model\Export\ColumnProviderInterface"
+                type="Nsk\PartNumbersInterchange\Model\Export\ColumnProvider"/>
+    <type name="Nsk\PartNumbersInterchange\Model\Export\FilterProcessorAggregator">
+        <arguments>
+            <argument name="handler" xsi:type="array">
+                <item name="int" xsi:type="object">Nsk\PartNumbersInterchange\Model\Export\Filter\IntFilter</item>
+                <item name="varchar" xsi:type="object">Nsk\PartNumbersInterchange\Model\Export\Filter\VarcharFilter
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- import data -->
+    <type name="Magento\ImportExport\Model\Import\SampleFileProvider">
+        <arguments>
+            <argument name="samples" xsi:type="array">
+                <item name="part_numbers_interchange" xsi:type="string">Nsk_PartNumbersInterchange</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Nsk\PartNumbersInterchange\Model\Import\Validator\ValidatorInterface"
+                type="Nsk\PartNumbersInterchange\Model\Import\Validator\ValidatorChain"/>
+    <type name="Nsk\PartNumbersInterchange\Model\Import\Validator\ValidatorChain">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="required" xsi:type="object">
+                    Nsk\PartNumbersInterchange\Model\Import\Validator\RequiredValidator
+                </item>
+                <item name="max_length" xsi:type="object">
+                    Nsk\PartNumbersInterchange\Model\Import\Validator\MaxLengthValidator
+                </item>
+                <item name="entity_id" xsi:type="object">
+                    Nsk\PartNumbersInterchange\Model\Import\Validator\EntityIdValidator
+                </item>
+                <item name="unique" xsi:type="object">
+                    Nsk\PartNumbersInterchange\Model\Import\Validator\UniqueValidator
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>
